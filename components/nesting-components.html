@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+       
+        <posts>
+
+        </posts>
+
+    </div>
+
+
+    <script>
+
+        Vue.component('posts', {
+            template:`
+
+            <div>
+                <table class="table">
+                    <tr>
+                        <th>Title</th>
+                        <th>Content</th>
+                    </tr>
+                    <tr v-for="post in posts" :key="post.id">
+                        <post>{{post.title}}</post>
+                        <post>{{post.body}}</post>
+                    </tr>
+                    
+                </table>
+            </div>
+                
+            `,
+            data() {
+                return {
+                    posts: [
+                        {id: 1, title: 'Lorem Ipsum', body: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. '},
+                        {id: 2, title: 'Cicero', body: 'But I must explain to you how all this mistaken idea of denouncing'},
+                        {id: 3, title: 'Li Europan Lingues', body: 'The European languages are members of the same family.'},
+                        {id: 4, title: 'Far far away', body: 'Far far away, behind the word mountains, far from the countries'},
+                        {id: 5, title: 'Werther', body: 'A wonderful serenity has taken possession of my entire soul, '},
+                        {id: 6, title: 'Kafka', body: 'A wonderful serenity has taken possession of my entire soul, '}
+                    ]
+                }
+            }
+        });
+
+        Vue.component('post', {
+            template: `<td><slot></slot></td>`
+        });
+
+        let vm = new Vue({
+            el: '#app'
+        });
+
+    </script>
+</body>
+</html>
+
